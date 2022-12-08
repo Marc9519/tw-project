@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>tw</groupId>
+	<artifactId>tw-client-starter</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>TW Client Starter</name>
+	<description>TW Client Starter</description>
+
+	<properties>
+		<jackson.version>2.13.0</jackson.version>
+		<commonsio.version>2.8.0</commonsio.version>
+		<slf4j.version>1.7.30</slf4j.version>
+		<junit.version>4.12</junit.version>
+		<mockito.version>3.11.2</mockito.version>
+		<jackson-annotations-version>2.11.4</jackson-annotations-version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>tw</groupId>
+			<artifactId>tw-data-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson-annotations-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<version>1.6</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commonsio.version}</version>
+		</dependency>
+		<!-- TEST -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

@@ -1,0 +1,452 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>tw</groupId>
+	<artifactId>tw-service-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<scm>
+		<url>svn+ssh://buildlira1/usr1/svn/ksdev/trunk/ksoft-external-parent</url>
+		<developerConnection>scm:svn:svn+ssh://buildlira1/usr1/svn/ksdev/trunk/ksoft-external-parent</developerConnection>
+		<connection>scm:svn:svn+ssh://buildlira1/usr1/svn/ksdev/trunk/ksoft-external-parent</connection>
+	</scm>
+
+	<!-- ###################################################################### -->
+	<!-- Properties -->
+	<!-- ###################################################################### -->
+
+	<properties>
+		<!-- Build -->
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<maven.clean.plugin.version>3.0.0</maven.clean.plugin.version>
+		<maven.resources.plugin.version>3.0.2</maven.resources.plugin.version>
+		<maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
+		<maven.dependency.plugin.version>3.1.0</maven.dependency.plugin.version>
+		<maven.surfire.plugin.version>2.20.1</maven.surfire.plugin.version>
+		<maven.failsafe.plugin.version>2.10</maven.failsafe.plugin.version>
+		<maven.jar.plugin.version>3.0.2</maven.jar.plugin.version>
+		<maven.install.plugin.version>2.5.2</maven.install.plugin.version>
+		<maven.deploy.plugin.version>2.8.2</maven.deploy.plugin.version>
+		<maven.scm.plugin.version>1.9.5</maven.scm.plugin.version>
+		<maven.war.plugin.version>3.2.0</maven.war.plugin.version>
+		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
+		<versions.maven.plugin.version>2.7</versions.maven.plugin.version>
+		<maven.assembly.plugin.version>3.1.0</maven.assembly.plugin.version>
+		<build.helper.maven.plugin.version>3.0.0</build.helper.maven.plugin.version>
+
+		<!-- Build properties -->
+
+		<repo.client.path>${project.basedir}/../KSoftV3-Server_LOCALHOST/swtclient/lib</repo.client.path>
+		<repo.server.path>${project.basedir}/../KSoftV3-Server_LOCALHOST/WEB-INF/lib</repo.server.path>
+		<repo.others.path>${project.basedir}/../KSoftV3-Server_LOCALHOST/others</repo.others.path>
+
+		<maven.build.timestamp.format>yyyyMMdd.HHmm</maven.build.timestamp.format>
+		<version.name>${project.version}-${maven.build.timestamp}</version.name>
+		<tag.format>${project.artifactId}-${version.name}</tag.format>
+		<project.build.sourceEncoding>UTF8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF8</project.reporting.outputEncoding>
+
+		<!-- Sonar -->
+		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar.junit.reportsPath>${project.basedir}/target/surefire-reports</sonar.junit.reportsPath>
+		<sonar.surefire.reportsPath>${project.basedir}/target/surefire-reports</sonar.surefire.reportsPath>
+		<sonar.jacoco.reportPaths>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPaths>
+		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+		<jacoco.plugin.version>0.8.1</jacoco.plugin.version>
+
+		<!-- Dependencies - Third party -->
+		<keycloak.version>4.4.0.Final</keycloak.version>
+		<swagger.version>2.8.0</swagger.version>
+		<commons.lang3.version>3.11</commons.lang3.version>
+		<spring-boot-version>2.3.12.RELEASE</spring-boot-version>
+	</properties>
+
+	<!-- ###################################################################### -->
+	<!-- Dependency Management -->
+	<!-- ###################################################################### -->
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons.lang3.version}</version>
+			</dependency>
+			<!-- KEYCLOAK -->
+			<dependency>
+				<groupId>org.keycloak</groupId>
+				<artifactId>keycloak-spring-security-adapter</artifactId>
+				<version>${keycloak.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.keycloak</groupId>
+				<artifactId>keycloak-spring-boot-starter</artifactId>
+				<version>${keycloak.version}</version>
+			</dependency>
+
+			<!-- Spring boot -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot-version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- Swagger -->
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+
+			<!-- Testing -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<version>${spring-boot-version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- ###################################################################### -->
+	<!-- Dependencies -->
+	<!-- ###################################################################### -->
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<!-- ###################################################################### -->
+	<!-- Build configuration -->
+	<!-- ###################################################################### -->
+
+	<build>
+		<!-- Plugin version management -->
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>${maven.clean.plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${maven.dependency.plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven.resources.plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven.compiler.plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-surfire-plugin</artifactId>
+					<version>${maven.surfire.plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>${maven.failsafe.plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${maven.jar.plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${maven.install.plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${maven.deploy.plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-scm-plugin</artifactId>
+					<version>${maven.scm.plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${maven.war.plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${maven.source.plugin.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>${maven.assembly.plugin.version}</version>
+				</plugin>
+
+				<!-- External plugins -->
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${jacoco.plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.corehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>${versions.maven.plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>${build.helper.maven.plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<!-- Plugin configuration management -->
+
+		<plugins>
+			<!-- Jar plugin -->
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+						</manifest>
+						<manifestEntries>
+							<Implementation-Version>${tag.format}</Implementation-Version>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<!-- Generate sources -->
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Surfire version from pluginManagement is ignored -->
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surfire.plugin.version}</version>
+				<configuration>
+					<excludes>
+						<exclude>**/*IT.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+			<!-- Failsafe plugin for integration tests -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>integration-tests</id>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+						<configuration>
+							<reportsDirectory>${sonar.surefire.reportsPath}</reportsDirectory>
+							<argLine>${failsafeArgLine}</argLine>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Jacoco configuration for SonarCube -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>generate-test-resources</id>
+						<phase>generate-test-resources</phase>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						<configuration>
+							<destFile>${sonar.jacoco.reportPaths}</destFile>
+							<append>true</append>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>pre-integration-test</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						<configuration>
+							<destFile>${sonar.jacoco.reportPaths}</destFile>
+							<propertyName>failsafeArgLine</propertyName>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Versioning configuration -->
+			<plugin>
+				<artifactId>maven-scm-plugin</artifactId>
+				<configuration>
+					<tag>${tag.format}</tag>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- ###################################################################### -->
+	<!-- Profiles -->
+	<!-- ###################################################################### -->
+
+	<profiles>
+		<profile>
+			<id>localDev</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>addDevConfig</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>add-resource</goal>
+								</goals>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>conf/localDev</directory>
+											<excludes>
+												<exclude>**/.svn/**</exclude>
+												<exclude>testApplication.*</exclude>
+											</excludes>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+							<execution>
+								<id>addDevTestConfig</id>
+								<phase>generate-test-resources</phase>
+								<goals>
+									<goal>add-test-resource</goal>
+								</goals>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>conf/localDev</directory>
+											<excludes>
+												<exclude>**/.svn/**</exclude>
+												<exclude>application.*</exclude>
+											</excludes>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>demo</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>addDemoConfig</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>add-resource</goal>
+								</goals>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>conf/demo</directory>
+											<excludes>
+												<exclude>**/.svn/**</exclude>
+												<exclude>testApplication.*</exclude>
+											</excludes>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+							<execution>
+								<id>addDemoTestConfig</id>
+								<phase>generate-test-resources</phase>
+								<goals>
+									<goal>add-test-resource</goal>
+								</goals>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>conf/demo</directory>
+											<excludes>
+												<exclude>**/.svn/**</exclude>
+												<exclude>application.*</exclude>
+											</excludes>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>build</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>addBuildTestConfig</id>
+								<phase>generate-test-resources</phase>
+								<goals>
+									<goal>add-test-resource</goal>
+								</goals>
+								<configuration>
+									<resources>
+										<resource>
+											<directory>conf/build</directory>
+											<excludes>
+												<exclude>**/.svn/**</exclude>
+											</excludes>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

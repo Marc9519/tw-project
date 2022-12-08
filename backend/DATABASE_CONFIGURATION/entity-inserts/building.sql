@@ -1,0 +1,16 @@
+INSERT INTO GENERAL.BUILDING (Building_id , name, max_lvl) VALUES(0, 'Hauptgebäude', 30);
+INSERT INTO GENERAL.BUILDING (Building_id , name, max_lvl) VALUES(1, 'Kaserne', 25);
+INSERT INTO GENERAL.BUILDING (Building_id , name, max_lvl) VALUES(2, 'Stall', 20);
+INSERT INTO GENERAL.BUILDING (Building_id , name, max_lvl) VALUES(3, 'Werkstatt', 15);
+INSERT INTO GENERAL.BUILDING (Building_id , name, max_lvl) VALUES(4, 'Schmiede', 20);
+INSERT INTO GENERAL.BUILDING (Building_id , name, max_lvl) VALUES(5, 'Versammlungsplatz', 1);
+INSERT INTO GENERAL.BUILDING (Building_id , name, max_lvl) VALUES(6, 'Statue', 1);
+INSERT INTO GENERAL.BUILDING (Building_id , name, max_lvl) VALUES(7, 'Marktplatz', 30);
+INSERT INTO GENERAL.BUILDING (Building_id , name, max_lvl) VALUES(8, 'Holzfällerlager', 30);
+INSERT INTO GENERAL.BUILDING (Building_id , name, max_lvl) VALUES(9, 'Lehmgrube', 30);
+INSERT INTO GENERAL.BUILDING (Building_id , name, max_lvl) VALUES(10, 'Eisenmine', 30);
+INSERT INTO GENERAL.BUILDING (Building_id , name, max_lvl) VALUES(11, 'Bauernhof', 30);
+INSERT INTO GENERAL.BUILDING (Building_id , name, max_lvl) VALUES(12, 'Speicher', 30);
+INSERT INTO GENERAL.BUILDING (Building_id , name, max_lvl) VALUES(13, 'Versteck', 10);
+INSERT INTO GENERAL.BUILDING (Building_id , name, max_lvl) VALUES(14, 'Wall', 20);
+INSERT INTO GENERAL.BUILDING (Building_id , name, max_lvl) VALUES(15, 'Adelshof', 1);
