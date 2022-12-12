@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background-attachment: fixed;
+    background-color: #d2c09e;
+    background-image: url(assets/bg-image.jpg);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    font-size: 9pt;
+    font-family: Verdana, Arial;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 35px;
+}
