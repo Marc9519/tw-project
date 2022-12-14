@@ -32,17 +32,9 @@ public class ImageResolver {
 		result.put("BOTTOM_RIGHT", bottomRight);
 	}
 
-	public BufferedImage mergeTop(BufferedImage left, BufferedImage right) {
+	public BufferedImage merge(BufferedImage left, BufferedImage right) {
 		BufferedImage result = new BufferedImage(left.getWidth() + right.getWidth(), left.getHeight(),
 				BufferedImage.TYPE_INT_ARGB);
-		Graphics g = result.getGraphics();
-		g.drawImage(left, 0, 0, null);
-		g.drawImage(right, left.getWidth() - 2, 0, null);
-		return result;
-	}
-
-	public BufferedImage mergeBottom(BufferedImage left, BufferedImage right) {
-		BufferedImage result = new BufferedImage(left.getWidth() + right.getWidth(), left.getHeight(),BufferedImage.TYPE_INT_ARGB);
 		Graphics g = result.getGraphics();
 		g.drawImage(left, 0, 0, null);
 		g.drawImage(right, left.getWidth() - 2, 0, null);

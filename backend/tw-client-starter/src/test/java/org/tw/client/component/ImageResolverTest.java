@@ -40,19 +40,19 @@ public class ImageResolverTest {
 	}
 
 	@Test
-	public void testMergeTop() throws IOException {
+	public void testMerge() throws IOException {
 		// Given
 		ImageResolver resolver = new ImageResolver();
 		Map<String, BufferedImage> subImageMap = resolver.resolveImage();
 		BufferedImage topLeft = subImageMap.get("TOP_LEFT");
 		BufferedImage topRight = subImageMap.get("TOP_RIGHT");
 		// When
-		BufferedImage top = resolver.mergeTop(topLeft, topRight);
+		BufferedImage top = resolver.merge(topLeft, topRight);
 		// Then
 		assertNotNull(top);
 		writeToFile(top, "top.png");
 	}
-	
+
 	@Test
 	public void testMergeBottom() throws Exception {
 		// Given
@@ -61,16 +61,16 @@ public class ImageResolverTest {
 		BufferedImage bottomLeft = subImageMap.get("BOTTOM_LEFT");
 		BufferedImage bottomRight = subImageMap.get("BOTTOM_RIGHT");
 		// When
-		BufferedImage merged = resolver.mergeBottom(bottomLeft, bottomRight);
+		BufferedImage merged = resolver.merge(bottomLeft, bottomRight);
 		// Then
 		assertNotNull(merged);
 		writeToFile(merged, "bottom.png");
 	}
-	
+
 	private void writeToFile(BufferedImage image, String name) throws IOException {
 		File file = new File("./target/test-classes/" + name);
 		ImageIO.write(image, "png", file);
-		
+
 	}
 
 }
