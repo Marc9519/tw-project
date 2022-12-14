@@ -3,4 +3,6 @@
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
     margin-top: 40pt;
+    border: 1px solid black;
+    width: 10%;
 }
